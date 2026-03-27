@@ -86,41 +86,46 @@ form input, form textarea {
     border-radius: 10px; color: white;
 }
 
-/* Contact Section අමතර Styles */
-.contact-card {
-    display: flex;
-    flex-direction: column;
+/* Navigation එකට අනිවාර්යයෙන්ම මේක දෙන්න */
+nav {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    padding: 25px 10%;
+    display: flex; 
+    justify-content: space-between; 
     align-items: center;
-    max-width: 500px;
-    width: 90%;
+    z-index: 1000; /* මේක 100ට වඩා වැඩි අගයක් තිබිය යුතුයි */
+    background: rgba(8, 27, 41, 0.9);
 }
 
-.section-title span {
+/* Contact Details style */
+.contact-details {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-details p {
+    margin: 10px 0;
+    font-size: 1.1rem;
     color: var(--primary);
 }
 
-form {
+.contact-details i {
+    margin-right: 10px;
+    color: white;
+}
+
+/* Contact Card එක ඇතුළේ form එකේ width එක හදන්න */
+.contact-card {
+    width: 100%;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    width: 100%; /* Card එකේ පළලටම එන්න */
+    align-items: center;
 }
 
-form input, form textarea {
-    padding: 15px;
-    background: var(--glass);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    color: white;
-    outline: none;
-    width: 100%;
-}
-
-form input:focus, form textarea:focus {
-    border-color: var(--primary);
-}
-
-.btn {
-    cursor: pointer;
-    border: none;
+form {
+    width: 100% !important;
 }

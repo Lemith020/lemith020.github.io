@@ -4,61 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lemith Nanditha | Software Engineering Portfolio</title>
-    <link rel="stylesheet" href="Css.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Css.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <h1>Lemith Nanditha</h1>
-            <p class="subtitle">Software Engineering Undergraduate | Full-Stack Enthusiast</p>
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">LN<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home">
+        <div class="container header-content">
+            <h1>Hi, I'm <span>Lemith Nanditha</span></h1>
+            <p class="subtitle">Software Engineering Undergraduate | Full-Stack Web Developer</p>
+            <div class="header-btns">
+                <a href="#projects" class="btn">View My Work</a>
+                <a href="https://www.linkedin.com/in/lemith-nanditha" target="_blank" class="btn secondary">Connect on LinkedIn</a>
+            </div>
         </div>
     </header>
 
     <main class="container">
         
         <section id="about">
-            <h2>About Me</h2>
-            <p>
-                I am a dedicated Software Engineering student at a premier government university in Sri Lanka. 
-                With a strong passion for building functional and aesthetically pleasing web applications, 
-                I focus on modern technologies like <strong>HTML5, CSS3, JavaScript, and PHP</strong>. 
-                My goal is to develop scalable software solutions that solve real-world problems.
-            </p>
+            <h2 class="section-title">About Me</h2>
+            <div class="about-text">
+                <p>
+                    I am a highly motivated <strong>Software Engineering student</strong> at a premier government university in Sri Lanka. 
+                    I specialize in building robust web applications and have a deep interest in <strong>Software Architecture and Modeling (UML)</strong>. 
+                    Currently, I am expanding my expertise in cloud technologies and mobile development.
+                </p>
+            </div>
         </section>
 
-        <hr>
+        <section id="skills">
+            <h2 class="section-title">My Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card"><i class="fab fa-html5"></i> <span>HTML5 / CSS3</span></div>
+                <div class="skill-card"><i class="fab fa-js"></i> <span>JavaScript</span></div>
+                <div class="skill-card"><i class="fab fa-php"></i> <span>PHP & MySQL</span></div>
+                <div class="skill-card"><i class="fas fa-project-diagram"></i> <span>UML Modeling</span></div>
+                <div class="skill-card"><i class="fab fa-aws"></i> <span>AWS Cloud</span></div>
+                <div class="skill-card"><i class="fab fa-bootstrap"></i> <span>Bootstrap</span></div>
+            </div>
+        </section>
 
         <section id="projects">
-            <h2>Featured Projects</h2>
-            <div class="project-card">
-                <h3>Amazon UI Clone</h3>
-                <p>
-                    A high-fidelity frontend replica of the Amazon storefront. This project demonstrates 
-                    mastery in <strong>Responsive Design</strong> and <strong>Modern CSS Layouts</strong>.
-                </p>
-                <ul class="tech-stack">
-                    <li>HTML5</li>
-                    <li>CSS3 (Flexbox/Grid)</li>
-                    <li>JavaScript</li>
-                </ul>
-                <div class="links">
-                    <a href="https://lemith020.github.io/Amazon-clone" target="_blank" class="btn">Live Demo</a>
-                    <a href="https://github.com/Lemith020/Amazon-clone" target="_blank" class="btn secondary">Source Code</a>
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>Amazon UI Clone</h3>
+                        <p>A fully responsive frontend replica of the Amazon web interface, focusing on pixel-perfect design and complex layouts.</p>
+                        <div class="tags">
+                            <span>HTML</span> <span>CSS</span> <span>JavaScript</span>
+                        </div>
+                        <div class="links">
+                            <a href="https://lemith020.github.io/Amazon-clone" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/Lemith020/Amazon-clone" target="_blank" class="project-link"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>Upcoming Project</h3>
+                        <p>Working on a Full-Stack Blog Application using PHP and MySQL. Coming soon!</p>
+                        <div class="tags"><span>PHP</span> <span>MySQL</span></div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <hr>
-
         <section id="certifications">
-            <h2>Certifications & Skills</h2>
-            <div class="cert-grid">
+            <h2 class="section-title">Certifications</h2>
+            <div class="cert-list">
                 <div class="cert-item">
-                    <strong>AWS Certified Cloud Practitioner Essentials</strong>
-                    <p>Cloud Computing Concepts & Infrastructure</p>
+                    <i class="fas fa-certificate"></i>
+                    <div>
+                        <strong>AWS Certified Cloud Practitioner Essentials</strong>
+                        <p>Cloud Computing Fundamentals & AWS Infrastructure</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -67,12 +102,11 @@
 
     <footer>
         <div class="container">
-            <p>Connect with me:</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/lemith-nanditha" target="_blank">LinkedIn</a>
-                <a href="https://github.com/Lemith020" target="_blank">GitHub</a>
+            <p>&copy; 2026 Lemith Nanditha. Built with passion & code.</p>
+            <div class="social-icons">
+                <a href="https://github.com/Lemith020" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/lemith-nanditha" target="_blank"><i class="fab fa-linkedin"></i></a>
             </div>
-            <p class="copyright">&copy; 2026 Lemith Nanditha. All rights reserved.</p>
         </div>
     </footer>
 

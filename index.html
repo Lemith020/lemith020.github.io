@@ -3,149 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lemith Nanditha | Software Engineering Portfolio</title>
+    <title>Lemith Nanditha | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <div class="circles">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+    </div>
+
     <nav>
-        <div class="container nav-container">
-            <div class="logo">LN<span>.</span></div>
+        <div class="container">
+            <div class="logo">Lemith<span>.</span></div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
             </ul>
         </div>
     </nav>
 
     <header id="home">
-        <div class="container header-content">
-            <h1>Hi, I'm <span>Lemith Nanditha</span></h1>
-            <p class="subtitle">Software Engineering Undergraduate | Full-Stack Web Developer</p>
-            <div class="header-btns">
-                <a href="#projects" class="btn">View My Work</a>
-                <a href="https://www.linkedin.com/in/lemith-nanditha" target="_blank" class="btn secondary">Connect on LinkedIn</a>
+        <div class="container glass">
+            <div class="hero-info">
+                <h1>Software Engineering <span>Undergraduate</span></h1>
+                <p>Hi, I'm Lemith Nanditha. I build digital experiences and scalable web applications.</p>
+                <div class="btns">
+                    <a href="#projects" class="btn">View Work</a>
+                    <a href="https://linkedin.com/in/lemith-nanditha" target="_blank" class="btn secondary">Hire Me</a>
+                </div>
             </div>
         </div>
     </header>
 
     <main class="container">
         
-        <section id="about">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-text">
-                <p>
-                    I am a highly motivated <strong>Software Engineering student</strong> at a premier government university in Sri Lanka. 
-                    I specialize in building robust web applications and have a deep interest in <strong>Software Architecture and Modeling (UML)</strong>. 
-                    Currently, I am expanding my expertise in cloud technologies and mobile development.
-                </p>
+        <section id="projects">
+            <h2 class="section-title">Featured Work</h2>
+            <div class="project-grid">
+                <div class="project-card glass">
+                    <div class="project-img">
+                        <img src="amazon-screenshot.png" alt="Amazon Clone">
+                    </div>
+                    <div class="project-content">
+                        <h3>Amazon UI Clone</h3>
+                        <p>A full responsive frontend replica of the Amazon storefront.</p>
+                        <div class="tags">
+                            <span>HTML</span> <span>CSS</span> <span>JS</span>
+                        </div>
+                        <a href="https://lemith020.github.io/Amazon-clone" target="_blank" class="link">Live Demo <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card glass placeholder">
+                    <div class="project-content">
+                        <i class="fas fa-plus"></i>
+                        <h3>New Project</h3>
+                        <p>Coming Soon...</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="skills">
-            <h2 class="section-title">My Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card"><i class="fab fa-html5"></i> <span>HTML5 / CSS3</span></div>
-                <div class="skill-card"><i class="fab fa-js"></i> <span>JavaScript</span></div>
-                <div class="skill-card"><i class="fab fa-php"></i> <span>PHP & MySQL</span></div>
-                <div class="skill-card"><i class="fas fa-project-diagram"></i> <span>UML Modeling</span></div>
-                <div class="skill-card"><i class="fab fa-aws"></i> <span>AWS Cloud</span></div>
-                <div class="skill-card"><i class="fab fa-bootstrap"></i> <span>Bootstrap</span></div>
+        <section id="certifications">
+            <h2 class="section-title">Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-item glass">
+                    <img src="cert1.png" alt="AWS">
+                    <h4>AWS Certified Practitioner</h4>
+                </div>
+                <div class="cert-item glass">
+                    <img src="cert2.png" alt="Cert 2">
+                    <h4>Professional Certification</h4>
+                </div>
+                <div class="cert-item glass">
+                    <img src="cert3.png" alt="Cert 3">
+                    <h4>IT Specialist Certification</h4>
+                </div>
             </div>
         </section>
-
-<section id="projects">
-    <h2 class="section-title">Featured Projects</h2>
-    <div class="project-grid">
-        
-        <div class="project-card">
-            <div class="project-info">
-                <h3>Amazon UI Clone</h3>
-                <p>A fully responsive frontend replica of the Amazon web interface, focusing on pixel-perfect design and complex layouts.</p>
-                <div class="tags">
-                    <span>HTML5</span> <span>CSS3</span> <span>JavaScript</span>
-                </div>
-                <div class="links">
-                    <a href="https://lemith020.github.io/Amazon-clone" target="_blank" class="project-link">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>
-                    <a href="https://github.com/Lemith020/Amazon-clone" target="_blank" class="project-link">
-                        <i class="fab fa-github"></i> Source Code
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-info">
-                <h3>System Documentation (UML)</h3>
-                <p>Comprehensive system design including Use Case, Class, and Sequence diagrams for a Blog Application.</p>
-                <div class="tags"><span>UML</span> <span>Software Modeling</span></div>
-            </div>
-        </div>
-
-    </div>
-</section>
-<section id="certifications">
-    <h2 class="section-title">Certifications</h2>
-    <div class="cert-grid">
-        
-        <div class="cert-card">
-            <div class="cert-image">
-                <img src="certificate\Aws Cloud Practitioner Essentials.png" alt="AWS Certified Cloud Practitioner">
-            </div>
-            <div class="cert-content">
-                <i class="fas fa-award"></i>
-                <div>
-                    <strong>AWS Certified Cloud Practitioner</strong>
-                    <p>Cloud Computing Fundamentals & Infrastructure</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="cert-card">
-            <div class="cert-image">
-                <img src="certificate\AWS Networking Basics.png" alt="AWS Networking Basics">
-            </div>
-            <div class="cert-content">
-                <i class="fas fa-award"></i>
-                <div>
-                    <strong>AWS Networking Basics</strong>
-                    <p>Brief description of the certification</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="cert-card">
-            <div class="cert-image">
-                <img src="certificate\AWS Well-Aritechitected Foundation.png" alt="AWS Well-Aritechitected Foundation">
-            </div>
-            <div class="cert-content">
-                <i class="fas fa-award"></i>
-                <div>
-                    <strong>AWS Well-Aritechitected Foundation</strong>
-                    <p>Brief description of the certification</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
 
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Lemith Nanditha. Built with passion & code.</p>
-            <div class="social-icons">
-                <a href="https://github.com/Lemith020" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/lemith-nanditha" target="_blank"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </div>
+        <p>&copy; 2026 Lemith Nanditha | Designed for Growth</p>
     </footer>
 
 </body>

@@ -12,20 +12,17 @@ body { background: var(--bg); color: white; overflow: hidden; }
 /* Horizontal Scroll Logic */
 main {
     display: flex;
-    width: 600vw; /* 6 sections */
+    width: 600vw; 
     height: 100vh;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    overflow-x: hidden; /* Scrollbar එක පෙන්නන්නේ නැහැ */
     scroll-behavior: smooth;
 }
-main::-webkit-scrollbar { display: none; }
 
 section {
     width: 100vw;
     height: 100vh;
     scroll-snap-align: start;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 100px 50px;
@@ -41,91 +38,53 @@ section {
     padding: 40px;
 }
 
-/* Navigation */
+/* Navigation - Z-index එක වැඩි කරලා තියෙන්නේ */
 nav {
     position: fixed;
-    top: 0; width: 100%; padding: 25px 10%;
+    top: 0; left: 0; width: 100%; padding: 25px 10%;
     display: flex; justify-content: space-between; align-items: center;
-    z-index: 100; background: rgba(8, 27, 41, 0.8);
+    z-index: 2000; background: rgba(8, 27, 41, 0.85);
 }
 .nav-links { display: flex; list-style: none; gap: 30px; }
 .nav-links a { text-decoration: none; color: white; font-weight: 500; transition: .3s; }
-.nav-links a.active, .nav-links a:hover { color: var(--primary); }
+.nav-links a.active, .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
 
-/* Hero Section */
-.hero-card { display: flex; align-items: center; gap: 50px; max-width: 1000px; }
+/* Creative Contact Section */
+.contact-card { width: 90%; max-width: 1000px; }
+.contact-wrapper { display: flex; gap: 40px; margin-top: 30px; align-items: flex-start; }
+
+.contact-info { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+.info-box { 
+    display: flex; align-items: center; gap: 15px; padding: 20px; 
+    border-radius: 15px; transition: 0.3s; 
+}
+.info-box:hover { background: rgba(0, 238, 255, 0.1); border-color: var(--primary); }
+.info-box i { font-size: 1.5rem; color: var(--primary); }
+.info-box h4 { color: var(--primary); margin-bottom: 5px; }
+.info-box a { color: white; text-decoration: none; font-size: 0.9rem; }
+
+form { flex: 1.5; display: flex; flex-direction: column; gap: 15px; }
+form input, form textarea {
+    padding: 15px; background: var(--glass); border: 1px solid var(--border);
+    border-radius: 10px; color: white; outline: none; transition: 0.3s;
+}
+form input:focus, form textarea:focus { border-color: var(--primary); }
+
+.btn {
+    display: inline-block; padding: 12px 28px;
+    background: var(--primary); border-radius: 40px;
+    color: var(--bg); text-decoration: none; font-weight: 600;
+    transition: .3s; border: none; cursor: pointer;
+}
+.btn:hover { box-shadow: 0 0 20px var(--primary); }
+
+/* Hero, Skills සහ අනිත් styles ඔයාගේ පරණ ඒවම මෙතනට දාගන්න පුළුවන් */
+.hero-card { display: flex; align-items: center; gap: 50px; }
 h1 { font-size: 3.5rem; }
 h3 span { color: var(--primary); }
 .img-box {
     width: 300px; height: 300px; border-radius: 50%;
-    border: 8px solid var(--primary);
-    box-shadow: 0 0 25px var(--primary);
+    border: 8px solid var(--primary); box-shadow: 0 0 25px var(--primary);
     overflow: hidden;
 }
 .img-box img { width: 100%; height: 100%; object-fit: cover; }
-
-/* Skills bars */
-.skills-wrapper { display: flex; gap: 50px; width: 100%; max-width: 1000px; }
-.tech-skills, .prof-skills { flex: 1; }
-.bar { margin-bottom: 20px; }
-.progress { height: 10px; background: var(--primary); border-radius: 5px; margin-top: 5px; box-shadow: 0 0 10px var(--primary); }
-
-/* Buttons */
-.btn {
-    display: inline-block; padding: 10px 28px;
-    background: var(--primary); border-radius: 40px;
-    color: var(--bg); text-decoration: none; font-weight: 600;
-    margin-top: 20px; transition: .3s;
-}
-.btn:hover { box-shadow: 0 0 15px var(--primary); }
-
-/* Contact Form */
-form { display: flex; flex-direction: column; gap: 15px; width: 400px; }
-form input, form textarea {
-    padding: 15px; background: var(--glass); border: 1px solid var(--border);
-    border-radius: 10px; color: white;
-}
-
-/* Navigation එකට අනිවාර්යයෙන්ම මේක දෙන්න */
-nav {
-    position: fixed;
-    top: 0; 
-    left: 0;
-    width: 100%; 
-    padding: 25px 10%;
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
-    z-index: 1000; /* මේක 100ට වඩා වැඩි අගයක් තිබිය යුතුයි */
-    background: rgba(8, 27, 41, 0.9);
-}
-
-/* Contact Details style */
-.contact-details {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.contact-details p {
-    margin: 10px 0;
-    font-size: 1.1rem;
-    color: var(--primary);
-}
-
-.contact-details i {
-    margin-right: 10px;
-    color: white;
-}
-
-/* Contact Card එක ඇතුළේ form එකේ width එක හදන්න */
-.contact-card {
-    width: 100%;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-form {
-    width: 100% !important;
-}

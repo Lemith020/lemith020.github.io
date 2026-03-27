@@ -111,19 +111,33 @@
 
 <section id="contact">
     <div class="contact-card glass">
-        <h2 class="section-title">Contact <span>Me</span></h2>
+        <h2 class="section-title" style="text-align:center;">Contact <span>Me</span></h2>
         
-        <div class="contact-details">
-            <p><i class="fas fa-phone"></i> 0768092970</p>
-            <p><i class="fas fa-envelope"></i> lemithnanditha41@gmail.com</p>
-        </div>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <div class="info-box glass">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p><a href="tel:0768092970">0768092970</a></p>
+                    </div>
+                </div>
+                <div class="info-box glass">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:lemithnanditha41@gmail.com">lemithnanditha41@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
 
-        <form>
-            <input type="text" placeholder="Full Name">
-            <input type="email" placeholder="Email Address">
-            <textarea placeholder="Your Message"></textarea>
-            <button type="submit" class="btn">Send Message</button>
-        </form>
+            <form>
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
     </div>
 </section>
     </main>

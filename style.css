@@ -85,3 +85,42 @@ form input, form textarea {
     padding: 15px; background: var(--glass); border: 1px solid var(--border);
     border-radius: 10px; color: white;
 }
+
+/* Contact Section අමතර Styles */
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+.section-title span {
+    color: var(--primary);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%; /* Card එකේ පළලටම එන්න */
+}
+
+form input, form textarea {
+    padding: 15px;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: white;
+    outline: none;
+    width: 100%;
+}
+
+form input:focus, form textarea:focus {
+    border-color: var(--primary);
+}
+
+.btn {
+    cursor: pointer;
+    border: none;
+}

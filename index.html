@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lemith Nanditha | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Animated background particles -->
     <div class="bg-grid"></div>
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
@@ -19,16 +18,31 @@
     <nav>
         <div class="nav-inner">
             <div class="logo">LN<span>.</span></div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#project">Project</a></li>
+                <li><a href="#project">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
+
+    <div class="mobile-drawer" id="mobileDrawer">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#project">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
 
     <main id="main-slider">
 
@@ -36,10 +50,10 @@
         <section id="home">
             <div class="hero-wrap glass">
                 <div class="hero-text">
-                    <div class="tag-line">👋 Hello, It's Me</div>
+                    <div class="tag-line">&#128075; Hello, It's Me</div>
                     <h1>Lemith<br><span>Nanditha</span></h1>
                     <h3>I'm a <span class="typed-text"></span><span class="cursor-blink">|</span></h3>
-                    <p class="desc">Software engineering undergraduate building modern web apps. Clean UI. Robust backends. Big ambitions.</p>
+                    <p class="desc">A passionate Software Engineering undergraduate at the <strong>University of Kelaniya</strong>, specialising in <strong>AI &amp; Machine Learning</strong> and Full Stack Development.</p>
                     <div class="socials">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -58,8 +72,8 @@
                         <div class="ring ring-1"></div>
                         <div class="ring ring-2"></div>
                     </div>
-                    <div class="float-badge badge-1"><i class="fas fa-code"></i> Full Stack</div>
-                    <div class="float-badge badge-2"><i class="fas fa-star"></i> 1+ Years</div>
+                    <div class="float-badge badge-1"><i class="fas fa-brain"></i> AI &amp; ML</div>
+                    <div class="float-badge badge-2"><i class="fas fa-code"></i> Full Stack</div>
                 </div>
             </div>
         </section>
@@ -69,13 +83,13 @@
             <div class="glass content-card">
                 <div class="about-label">WHO AM I</div>
                 <h2 class="section-title">About <span>Me</span></h2>
-                <h3 class="sub-title">Full Stack Developer & AI & ML </h3>
-                <p>I'm a passionate software engineering student at a university of Kelaniya in Sri Lanka. I craft clean UIs and robust backends using PHP, MySQL, and modern JavaScript frameworks.</p>
-                <p style="margin-top:12px">Currently exploring AWS cloud architecture and mobile development with Flutter.</p>
+                <h3 class="sub-title">Full Stack Developer &amp; AI/ML Enthusiast</h3>
+                <p>I am a dedicated Software Engineering undergraduate at the <strong>University of Kelaniya, Sri Lanka</strong>, with a primary focus on <strong>Artificial Intelligence &amp; Machine Learning</strong> and <strong>Full Stack Web Development</strong>.</p>
+                <p style="margin-top:12px">I craft intuitive user interfaces and robust, scalable backends, while continuously expanding my expertise in intelligent systems, cloud infrastructure, and mobile development.</p>
                 <div class="about-stats">
-                    <div class="stat"><span>1+</span><p>Projects</p></div>
-                    <div class="stat"><span>1+</span><p>Years Coding</p></div>
-                    <div class="stat"><span>5+</span><p>Tech Skills</p></div>
+                    <div class="stat"><span>5+</span><p>Projects</p></div>
+                    <div class="stat"><span>2+</span><p>Years Coding</p></div>
+                    <div class="stat"><span>10+</span><p>Tech Skills</p></div>
                 </div>
                 <a href="#contact" class="btn nav-btn">Get In Touch <i class="fas fa-paper-plane"></i></a>
             </div>
@@ -91,43 +105,43 @@
                         <div class="service-icon"><i class="fas fa-palette"></i></div>
                         <div class="service-num">01</div>
                         <h3>UI / Web Design</h3>
-                        <p>Crafting pixel-perfect, responsive layouts with modern aesthetics and smooth user experiences.</p>
+                        <p>Crafting pixel-perfect, responsive layouts with modern aesthetics and seamless user experiences.</p>
                         <div class="service-tags"><span>Figma</span><span>HTML</span><span>CSS</span></div>
                     </div>
                     <div class="service-box glass featured">
                         <div class="service-icon"><i class="fas fa-server"></i></div>
                         <div class="service-num">02</div>
                         <h3>Backend Development</h3>
-                        <p>Building secure, scalable server-side systems with clean architecture and optimized databases.</p>
+                        <p>Building secure, scalable server-side systems with clean architecture, RESTful APIs, and optimised databases.</p>
                         <div class="service-tags"><span>PHP</span><span>MySQL</span><span>REST API</span></div>
                     </div>
                     <div class="service-box glass">
-                        <div class="service-icon"><i class="fas fa-sitemap"></i></div>
+                        <div class="service-icon"><i class="fas fa-brain"></i></div>
                         <div class="service-num">03</div>
+                        <h3>AI &amp; ML Solutions</h3>
+                        <p>Developing intelligent models and data-driven applications using machine learning frameworks.</p>
+                        <div class="service-tags"><span>Python</span><span>TensorFlow</span><span>scikit-learn</span></div>
+                    </div>
+                    <div class="service-box glass">
+                        <div class="service-icon"><i class="fas fa-sitemap"></i></div>
+                        <div class="service-num">04</div>
                         <h3>System Architecture</h3>
-                        <p>Designing robust system blueprints, UML diagrams, and technical documentation for complex applications.</p>
+                        <p>Designing comprehensive system blueprints, UML diagrams, and technical documentation.</p>
                         <div class="service-tags"><span>UML</span><span>ERD</span><span>DFD</span></div>
                     </div>
                     <div class="service-box glass">
                         <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-                        <div class="service-num">04</div>
+                        <div class="service-num">05</div>
                         <h3>Mobile Development</h3>
                         <p>Developing cross-platform mobile applications with intuitive interfaces for iOS and Android.</p>
                         <div class="service-tags"><span>Flutter</span><span>Dart</span><span>Firebase</span></div>
                     </div>
                     <div class="service-box glass">
                         <div class="service-icon"><i class="fas fa-cloud"></i></div>
-                        <div class="service-num">05</div>
-                        <h3>Cloud Integration</h3>
-                        <p>Deploying and managing applications on cloud platforms with CI/CD pipelines and serverless functions.</p>
-                        <div class="service-tags"><span>AWS</span><span>Docker</span><span>Linux</span></div>
-                    </div>
-                    <div class="service-box glass">
-                        <div class="service-icon"><i class="fas fa-search-plus"></i></div>
                         <div class="service-num">06</div>
-                        <h3>SEO & Performance</h3>
-                        <p>Optimizing web applications for speed, accessibility, and search engine visibility.</p>
-                        <div class="service-tags"><span>SEO</span><span>Lighthouse</span><span>Web Vitals</span></div>
+                        <h3>Cloud Integration</h3>
+                        <p>Deploying and managing applications on cloud platforms with CI/CD pipelines and serverless architecture.</p>
+                        <div class="service-tags"><span>AWS</span><span>Docker</span><span>Linux</span></div>
                     </div>
                 </div>
             </div>
@@ -142,43 +156,30 @@
                     <div class="skills-col glass">
                         <h3 class="skills-heading"><i class="fas fa-laptop-code"></i> Technical</h3>
                         <div class="skill-item">
-                            <div class="skill-info"><span>HTML5</span><span class="pct">95%</span></div>
-                            <div class="skill-track"><div class="skill-bar" data-width="95">
-                                <div class="bar-shine"></div>
-                            </div></div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info"><span>CSS3 / SCSS</span><span class="pct">85%</span></div>
-                            <div class="skill-track"><div class="skill-bar" data-width="85">
-                                <div class="bar-shine"></div>
-                            </div></div>
+                            <div class="skill-info"><span>HTML5 / CSS3</span><span class="pct">95%</span></div>
+                            <div class="skill-track"><div class="skill-bar" data-width="95"><div class="bar-shine"></div></div></div>
                         </div>
                         <div class="skill-item">
                             <div class="skill-info"><span>JavaScript</span><span class="pct">75%</span></div>
-                            <div class="skill-track"><div class="skill-bar" data-width="75">
-                                <div class="bar-shine"></div>
-                            </div></div>
+                            <div class="skill-track"><div class="skill-bar" data-width="75"><div class="bar-shine"></div></div></div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-info"><span>PHP</span><span class="pct">88%</span></div>
-                            <div class="skill-track"><div class="skill-bar" data-width="88">
-                                <div class="bar-shine"></div>
-                            </div></div>
+                            <div class="skill-info"><span>PHP &amp; MySQL</span><span class="pct">88%</span></div>
+                            <div class="skill-track"><div class="skill-bar" data-width="88"><div class="bar-shine"></div></div></div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-info"><span>MySQL</span><span class="pct">82%</span></div>
-                            <div class="skill-track"><div class="skill-bar" data-width="82">
-                                <div class="bar-shine"></div>
-                            </div></div>
+                            <div class="skill-info"><span>Python</span><span class="pct">80%</span></div>
+                            <div class="skill-track"><div class="skill-bar" data-width="80"><div class="bar-shine"></div></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Machine Learning</span><span class="pct">70%</span></div>
+                            <div class="skill-track"><div class="skill-bar" data-width="70"><div class="bar-shine"></div></div></div>
                         </div>
                         <div class="skill-item">
                             <div class="skill-info"><span>Flutter / Dart</span><span class="pct">60%</span></div>
-                            <div class="skill-track"><div class="skill-bar" data-width="60">
-                                <div class="bar-shine"></div>
-                            </div></div>
+                            <div class="skill-track"><div class="skill-bar" data-width="60"><div class="bar-shine"></div></div></div>
                         </div>
                     </div>
-
                     <div class="skills-col glass">
                         <h3 class="skills-heading"><i class="fas fa-brain"></i> Professional</h3>
                         <div class="radar-grid">
@@ -188,8 +189,7 @@
                                     <circle cx="40" cy="40" r="35" fill="none" stroke="var(--primary)" stroke-width="3"
                                         stroke-dasharray="220" stroke-dashoffset="22" class="radar-ring" stroke-linecap="round"/>
                                 </svg>
-                                <span class="radar-pct">90%</span>
-                                <p>Creativity</p>
+                                <span class="radar-pct">90%</span><p>Creativity</p>
                             </div>
                             <div class="radar-item">
                                 <svg viewBox="0 0 80 80" class="radar-svg">
@@ -197,8 +197,7 @@
                                     <circle cx="40" cy="40" r="35" fill="none" stroke="#7c3aed" stroke-width="3"
                                         stroke-dasharray="220" stroke-dashoffset="33" class="radar-ring" stroke-linecap="round"/>
                                 </svg>
-                                <span class="radar-pct" style="color:#7c3aed">85%</span>
-                                <p>Teamwork</p>
+                                <span class="radar-pct" style="color:#7c3aed">85%</span><p>Teamwork</p>
                             </div>
                             <div class="radar-item">
                                 <svg viewBox="0 0 80 80" class="radar-svg">
@@ -206,8 +205,7 @@
                                     <circle cx="40" cy="40" r="35" fill="none" stroke="#f59e0b" stroke-width="3"
                                         stroke-dasharray="220" stroke-dashoffset="44" class="radar-ring" stroke-linecap="round"/>
                                 </svg>
-                                <span class="radar-pct" style="color:#f59e0b">80%</span>
-                                <p>Problem Solving</p>
+                                <span class="radar-pct" style="color:#f59e0b">80%</span><p>Problem Solving</p>
                             </div>
                             <div class="radar-item">
                                 <svg viewBox="0 0 80 80" class="radar-svg">
@@ -215,15 +213,15 @@
                                     <circle cx="40" cy="40" r="35" fill="none" stroke="#10b981" stroke-width="3"
                                         stroke-dasharray="220" stroke-dashoffset="55" class="radar-ring" stroke-linecap="round"/>
                                 </svg>
-                                <span class="radar-pct" style="color:#10b981">75%</span>
-                                <p>Communication</p>
+                                <span class="radar-pct" style="color:#10b981">75%</span><p>Communication</p>
                             </div>
                         </div>
-
-                        <h3 class="skills-heading" style="margin-top:25px"><i class="fas fa-tools"></i> Tools & Tech</h3>
+                        <h3 class="skills-heading" style="margin-top:22px"><i class="fas fa-tools"></i> Tools &amp; Tech</h3>
                         <div class="tools-grid">
                             <div class="tool-badge"><i class="fab fa-git-alt"></i> Git</div>
                             <div class="tool-badge"><i class="fab fa-github"></i> GitHub</div>
+                            <div class="tool-badge"><i class="fab fa-python"></i> NumPy/Pandas</div>
+                            <div class="tool-badge"><i class="fas fa-robot"></i> TensorFlow</div>
                             <div class="tool-badge"><i class="fab fa-aws"></i> AWS</div>
                             <div class="tool-badge"><i class="fab fa-docker"></i> Docker</div>
                             <div class="tool-badge"><i class="fab fa-linux"></i> Linux</div>
@@ -253,15 +251,13 @@
                         </div>
                         <div class="project-info">
                             <h3>Amazon UI Clone</h3>
-                            <p>A pixel-perfect frontend clone of Amazon's interface with responsive design.</p>
+                            <p>A pixel-perfect frontend clone of Amazon's e-commerce interface with responsive design.</p>
                             <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
                         </div>
                     </div>
-
-                    <!-- NEW PROJECT BOX — ඔබේ project details මෙතනට දාන්න -->
-                    <div class="project-card glass project-empty">
+                    <div class="project-card glass">
                         <div class="project-img">
-                            <img src="project2-ss.png" alt="Your Project"
+                            <img src="project2-ss.png" alt="Project 2"
                                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                             <div class="proj-fallback"><i class="fas fa-plus"></i></div>
                             <div class="project-overlay">
@@ -272,7 +268,7 @@
                         </div>
                         <div class="project-info">
                             <h3>Your Next Project</h3>
-                            <p>Add your project description here. Change the title, image, tags and GitHub link.</p>
+                            <p>Replace this with your project title, description, screenshot and GitHub link.</p>
                             <div class="project-tags"><span>PHP</span><span>MySQL</span><span>CSS</span></div>
                         </div>
                     </div>
@@ -287,27 +283,18 @@
                 <h2 class="section-title" style="text-align:center">Contact <span>Me</span></h2>
                 <div class="contact-wrapper">
                     <div class="contact-info">
-                        <p class="contact-intro">Have a project in mind? Let's build something great together.</p>
+                        <p class="contact-intro">Have a project in mind or want to collaborate? I'd love to hear from you.</p>
                         <div class="info-box glass">
                             <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
-                            <div>
-                                <h4>Phone</h4>
-                                <a href="tel:0768092970">076 809 2970</a>
-                            </div>
+                            <div><h4>Phone</h4><a href="tel:0768092970">076 809 2970</a></div>
                         </div>
                         <div class="info-box glass">
                             <div class="info-icon"><i class="fas fa-envelope"></i></div>
-                            <div>
-                                <h4>Email</h4>
-                                <a href="mailto:lemithnanditha41@gmail.com">lemithnanditha41@gmail.com</a>
-                            </div>
+                            <div><h4>Email</h4><a href="mailto:lemithnanditha41@gmail.com">lemithnanditha41@gmail.com</a></div>
                         </div>
                         <div class="info-box glass">
                             <div class="info-icon"><i class="fab fa-github"></i></div>
-                            <div>
-                                <h4>GitHub</h4>
-                                <a href="https://github.com/Lemith020" target="_blank">github.com/Lemith020</a>
-                            </div>
+                            <div><h4>GitHub</h4><a href="https://github.com/Lemith020" target="_blank">github.com/Lemith020</a></div>
                         </div>
                     </div>
                     <form id="contactForm">
@@ -320,7 +307,7 @@
                             <label for="email">Email Address</label>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" placeholder=" " rows="5" required></textarea>
+                            <textarea id="message" placeholder=" " rows="4" required></textarea>
                             <label for="message">Your Message</label>
                         </div>
                         <button type="submit" class="btn btn-full">

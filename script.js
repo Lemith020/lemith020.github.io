@@ -1,145 +1,197 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const slider = document.getElementById('main-slider');
+    const slider    = document.getElementById('main-slider');
+    const hamburger = document.getElementById('hamburger');
+    const drawer    = document.getElementById('mobileDrawer');
+    const overlay   = document.getElementById('drawerOverlay');
 
-    // ===== SMOOTH NAV SCROLL (FIXED) =====
-    function scrollToSection(targetId) {
-        const cleanId = targetId.replace('#', '');
-        const target = document.getElementById(cleanId);
+    /* ─── helpers ─── */
+    const isMobile = () => window.innerWidth <= 900;
+
+    /* ─── DESKTOP: horizontal scroll nav ─── */
+    function scrollToSection(id) {
+        const clean  = id.replace('#', '');
+        const target = document.getElementById(clean);
         if (!target) return;
 
-        slider.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+        if (isMobile()) {
+            // vertical scroll
+            const top = target.getBoundingClientRect().top + window.scrollY - 70;
+            window.scrollTo({ top, behavior: 'smooth' });
+        } else {
+            slider.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+        }
 
-        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-        const activeLink = document.querySelector(`.nav-links a[href="#${cleanId}"]`);
-        if (activeLink) activeLink.classList.add('active');
+        setActive(clean);
     }
 
-    // Attach to all # links
+    function setActive(id) {
+        document.querySelectorAll('.nav-links a, .mobile-drawer a').forEach(a => a.classList.remove('active'));
+        document.querySelectorAll(`a[href="#${id}"]`).forEach(a => a.classList.add('active'));
+    }
+
+    // Attach click to all # links
     document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', e => {
             const href = link.getAttribute('href');
             if (href && href.length > 1) {
                 e.preventDefault();
+                closeDrawer();
                 scrollToSection(href);
             }
         });
     });
 
-    // Update active nav on scroll
+    // Update active on desktop horizontal scroll
     slider.addEventListener('scroll', () => {
+        if (isMobile()) return;
         const pos = slider.scrollLeft;
-        document.querySelectorAll('section').forEach(sec => {
-            const left = sec.offsetLeft;
-            if (pos >= left - window.innerWidth * 0.3 && pos < left + window.innerWidth * 0.7) {
-                document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-                const match = document.querySelector(`.nav-links a[href="#${sec.id}"]`);
-                if (match) match.classList.add('active');
+        document.querySelectorAll('#main-slider section').forEach(sec => {
+            const l = sec.offsetLeft;
+            if (pos >= l - window.innerWidth * 0.35 && pos < l + window.innerWidth * 0.65) {
+                setActive(sec.id);
+                // trigger skill animation
+                if (sec.id === 'skills' && !skillsAnimated) {
+                    animateSkills(); animateRadar(); skillsAnimated = true;
+                }
             }
         });
-
-        // Trigger skill bar animation when skills section is visible
-        const skillsSec = document.getElementById('skills');
-        if (skillsSec) {
-            const sl = skillsSec.offsetLeft;
-            if (pos >= sl - window.innerWidth * 0.5 && !skillsAnimated) {
-                animateSkills();
-                animateRadar();
-                skillsAnimated = true;
-            }
-        }
     });
 
-    // ===== TYPED TEXT =====
-    const phrases = ['Web Developer', 'Full Stack Dev', 'PHP / MySQL', 'UI Designer', 'CS Student'];
-    let phraseIndex = 0, charIndex = 0, deleting = false;
+    // Update active on mobile vertical scroll
+    window.addEventListener('scroll', () => {
+        if (!isMobile()) return;
+        const scrollY = window.scrollY + window.innerHeight * 0.35;
+        document.querySelectorAll('#main-slider section').forEach(sec => {
+            const top    = sec.offsetTop;
+            const bottom = top + sec.offsetHeight;
+            if (scrollY >= top && scrollY < bottom) {
+                setActive(sec.id);
+                if (sec.id === 'skills' && !skillsAnimated) {
+                    animateSkills(); animateRadar(); skillsAnimated = true;
+                }
+            }
+        });
+    });
+
+    /* ─── HAMBURGER / DRAWER ─── */
+    function openDrawer() {
+        drawer.classList.add('open');
+        overlay.classList.add('open');
+        hamburger.classList.add('open');
+        document.body.style.overflow = 'hidden'; // prevent bg scroll
+    }
+    function closeDrawer() {
+        drawer.classList.remove('open');
+        overlay.classList.remove('open');
+        hamburger.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    hamburger.addEventListener('click', () => drawer.classList.contains('open') ? closeDrawer() : openDrawer());
+    overlay.addEventListener('click', closeDrawer);
+
+    /* ─── TYPED TEXT ─── */
+    const phrases = ['Full Stack Developer', 'AI & ML Engineer', 'PHP / MySQL Dev', 'Flutter Developer', 'UI Designer'];
+    let pi = 0, ci = 0, del = false;
     const typedEl = document.querySelector('.typed-text');
 
     function type() {
         if (!typedEl) return;
-        const current = phrases[phraseIndex];
-        if (!deleting) {
-            typedEl.textContent = current.slice(0, charIndex + 1);
-            charIndex++;
-            if (charIndex === current.length) {
-                setTimeout(() => { deleting = true; type(); }, 1800);
-                return;
-            }
-        } else {
-            typedEl.textContent = current.slice(0, charIndex - 1);
-            charIndex--;
-            if (charIndex === 0) {
-                deleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-            }
-        }
-        setTimeout(type, deleting ? 60 : 110);
+        const cur = phrases[pi];
+        typedEl.textContent = del ? cur.slice(0, ci - 1) : cur.slice(0, ci + 1);
+        del ? ci-- : ci++;
+        if (!del && ci === cur.length) { setTimeout(() => { del = true; type(); }, 1900); return; }
+        if (del && ci === 0)           { del = false; pi = (pi + 1) % phrases.length; }
+        setTimeout(type, del ? 55 : 105);
     }
-    setTimeout(type, 700);
+    setTimeout(type, 800);
 
-    // ===== SKILL BAR ANIMATION =====
+    /* ─── SKILL BAR ANIMATION ─── */
     let skillsAnimated = false;
 
     function animateSkills() {
         document.querySelectorAll('.skill-bar').forEach((bar, i) => {
-            const targetWidth = bar.getAttribute('data-width') + '%';
-            setTimeout(() => {
-                bar.style.width = targetWidth;
-            }, i * 120);
+            setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, i * 110);
         });
     }
-
     function animateRadar() {
-        // Circumference of r=35 circle = 2*pi*35 ≈ 220
-        const rings = document.querySelectorAll('.radar-ring');
-        rings.forEach((ring, i) => {
-            const finalOffset = parseFloat(ring.getAttribute('stroke-dashoffset'));
-            ring.style.strokeDashoffset = '220'; // start hidden
+        document.querySelectorAll('.radar-ring').forEach((ring, i) => {
+            const final = parseFloat(ring.getAttribute('stroke-dashoffset'));
+            ring.style.strokeDashoffset = '220';
             setTimeout(() => {
-                ring.style.transition = 'stroke-dashoffset 1.5s cubic-bezier(0.22, 1, 0.36, 1)';
-                ring.style.strokeDashoffset = finalOffset;
-            }, i * 200 + 100);
+                ring.style.transition = 'stroke-dashoffset 1.5s cubic-bezier(0.22,1,0.36,1)';
+                ring.style.strokeDashoffset = final;
+            }, i * 180 + 100);
         });
     }
 
-    // Trigger if skills section is already visible on load
+    // Trigger if landing on skills (page load / refresh)
     setTimeout(() => {
         const skillsSec = document.getElementById('skills');
-        if (skillsSec && slider.scrollLeft >= skillsSec.offsetLeft - 100) {
-            animateSkills();
-            animateRadar();
-            skillsAnimated = true;
+        if (!skillsSec || skillsAnimated) return;
+        if (isMobile()) {
+            const inView = skillsSec.getBoundingClientRect().top < window.innerHeight * 0.8;
+            if (inView) { animateSkills(); animateRadar(); skillsAnimated = true; }
+        } else {
+            if (slider.scrollLeft >= skillsSec.offsetLeft - 100) { animateSkills(); animateRadar(); skillsAnimated = true; }
         }
-    }, 300);
+    }, 400);
 
-    // ===== CUSTOM CURSOR =====
+    /* ─── SERVICE BOX ENTRANCE ─── */
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-box').forEach((box, i) => {
+        box.style.opacity = '0';
+        box.style.transform = 'translateY(18px)';
+        box.style.transition = `opacity .45s ease ${i * 0.07}s, transform .45s ease ${i * 0.07}s`;
+        observer.observe(box);
+    });
+
+    /* ─── CUSTOM CURSOR (desktop only) ─── */
     const dot  = document.querySelector('.cursor-dot');
     const ring = document.querySelector('.cursor-ring');
     const glow = document.querySelector('.cursor-glow');
 
-    document.addEventListener('mousemove', e => {
-        const x = e.clientX, y = e.clientY;
-        if (dot)  { dot.style.left  = x + 'px'; dot.style.top  = y + 'px'; }
-        if (ring) { ring.style.left = x + 'px'; ring.style.top = y + 'px'; }
-        if (glow) { glow.style.left = x + 'px'; glow.style.top = y + 'px'; }
-    });
+    if (dot && ring && glow) {
+        // Fast dot, slightly lagged ring, slow glow
+        let mx = 0, my = 0, rx = 0, ry = 0;
 
-    // Ring grows on hover over interactive elements
-    document.querySelectorAll('a, button, .service-box, .project-card, .nav-links a').forEach(el => {
-        el.addEventListener('mouseenter', () => ring && ring.classList.add('hovered'));
-        el.addEventListener('mouseleave', () => ring && ring.classList.remove('hovered'));
-    });
+        document.addEventListener('mousemove', e => {
+            mx = e.clientX; my = e.clientY;
+            dot.style.left  = mx + 'px'; dot.style.top  = my + 'px';
+            glow.style.left = mx + 'px'; glow.style.top = my + 'px';
+        });
 
-    // ===== CONTACT FORM =====
+        // Smooth ring follow
+        function followRing() {
+            rx += (mx - rx) * 0.18;
+            ry += (my - ry) * 0.18;
+            ring.style.left = rx + 'px';
+            ring.style.top  = ry + 'px';
+            requestAnimationFrame(followRing);
+        }
+        followRing();
+
+        document.querySelectorAll('a, button, .service-box, .project-card').forEach(el => {
+            el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
+            el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
+        });
+    }
+
+    /* ─── CONTACT FORM ─── */
     const form = document.getElementById('contactForm');
     if (form) {
         form.addEventListener('submit', e => {
             e.preventDefault();
-            const btn = form.querySelector('button[type="submit"]');
+            const btn  = form.querySelector('button[type="submit"]');
             const text = btn.querySelector('.btn-text');
             btn.disabled = true;
             btn.style.background = '#10b981';
-            text.textContent = 'Message Sent!';
+            text.textContent = '✓ Message Sent!';
             setTimeout(() => {
                 btn.disabled = false;
                 btn.style.background = '';
@@ -149,21 +201,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== SERVICE BOXES STAGGER ANIMATION =====
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.service-box').forEach((box, i) => {
-        box.style.opacity = '0';
-        box.style.transform = 'translateY(20px)';
-        box.style.transition = `opacity 0.5s ease ${i * 0.08}s, transform 0.5s ease ${i * 0.08}s`;
-        observer.observe(box);
+    /* ─── RESIZE: reset scroll if switching breakpoint ─── */
+    window.addEventListener('resize', () => {
+        if (!isMobile()) {
+            document.body.style.overflow = '';
+            closeDrawer();
+        }
     });
 
 });

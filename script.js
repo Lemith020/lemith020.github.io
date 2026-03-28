@@ -112,13 +112,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 300);
 
-    // ===== CURSOR GLOW =====
+    // ===== CUSTOM CURSOR =====
+    const dot  = document.querySelector('.cursor-dot');
+    const ring = document.querySelector('.cursor-ring');
     const glow = document.querySelector('.cursor-glow');
+
     document.addEventListener('mousemove', e => {
-        if (glow) {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
-        }
+        const x = e.clientX, y = e.clientY;
+        if (dot)  { dot.style.left  = x + 'px'; dot.style.top  = y + 'px'; }
+        if (ring) { ring.style.left = x + 'px'; ring.style.top = y + 'px'; }
+        if (glow) { glow.style.left = x + 'px'; glow.style.top = y + 'px'; }
+    });
+
+    // Ring grows on hover over interactive elements
+    document.querySelectorAll('a, button, .service-box, .project-card, .nav-links a').forEach(el => {
+        el.addEventListener('mouseenter', () => ring && ring.classList.add('hovered'));
+        el.addEventListener('mouseleave', () => ring && ring.classList.remove('hovered'));
     });
 
     // ===== CONTACT FORM =====

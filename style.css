@@ -1,4 +1,4 @@
-/* ===== ROOT ===== */
+
 :root {
     --primary: #00eeff;
     --primary-dim: rgba(0,238,255,0.12);
@@ -18,11 +18,11 @@ body {
     background: var(--bg);
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
-    overflow: hidden;          /* desktop: no body scroll */
+    overflow: hidden;         
     cursor: none;
 }
 
-/* ===== BACKGROUND ===== */
+
 .bg-grid {
     position: fixed; inset: 0;
     background-image:
@@ -32,7 +32,7 @@ body {
     pointer-events: none; z-index: 0;
 }
 
-/* ===== CUSTOM CURSOR (desktop only) ===== */
+
 .cursor-dot, .cursor-ring, .cursor-glow { display: none; }
 
 @media (pointer: fine) {
@@ -59,7 +59,7 @@ body {
     }
 }
 
-/* ===== NAV ===== */
+
 nav {
     position: fixed; top:0; left:0; width:100%;
     height: var(--nav-h); z-index:9000;
@@ -86,10 +86,9 @@ nav {
 .nav-links a:hover, .nav-links a.active {
     color:var(--primary); background:var(--primary-dim);
 }
-/* Hamburger — hidden on desktop */
+
 .hamburger { display:none; }
 
-/* ===== MOBILE DRAWER ===== */
 .mobile-drawer {
     position: fixed; top:0; right:-100%; width:72%; max-width:280px;
     height:100vh; z-index:9500;
@@ -114,7 +113,6 @@ nav {
 }
 .drawer-overlay.open { display:block; }
 
-/* ===== GLASS ===== */
 .glass {
     background: var(--glass);
     backdrop-filter: blur(20px);
@@ -123,7 +121,6 @@ nav {
     border-radius: 24px;
 }
 
-/* ===== BUTTONS ===== */
 .btn {
     display:inline-flex; align-items:center; gap:8px;
     padding:12px 26px; background:var(--primary);
@@ -134,7 +131,6 @@ nav {
 .btn:hover { box-shadow:0 0 28px rgba(0,238,255,0.4); transform:translateY(-2px); }
 .btn-full { width:100%; justify-content:center; }
 
-/* ===== LABELS & TITLES ===== */
 .about-label {
     font-size:.7rem; font-weight:600; letter-spacing:3px;
     color:var(--primary); text-transform:uppercase; margin-bottom:8px; opacity:.8;
@@ -228,7 +224,7 @@ section {
 .stat span { font-family:'Syne',sans-serif; font-size:1.9rem; font-weight:800; color:var(--primary); display:block; }
 .stat p { font-size:.76rem; color:var(--text-muted); margin-top:2px; }
 
-/* ===== SERVICES ===== */
+
 .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:10px; }
 .service-box { padding:26px 22px; border-radius:20px; transition:.3s ease; position:relative; overflow:hidden; }
 .service-box::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(0,238,255,0.05),transparent); opacity:0; transition:.35s; border-radius:20px; }
@@ -243,7 +239,7 @@ section {
 .service-tags { display:flex; flex-wrap:wrap; gap:5px; }
 .service-tags span { font-size:.68rem; padding:3px 9px; border-radius:20px; background:rgba(0,238,255,0.07); color:var(--primary); border:1px solid rgba(0,238,255,0.13); }
 
-/* ===== SKILLS ===== */
+
 .skills-container { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:12px; }
 .skills-col { padding:28px; border-radius:20px; }
 .skills-heading { font-family:'Syne',sans-serif; font-size:.9rem; font-weight:700; color:var(--primary); margin-bottom:18px; display:flex; align-items:center; gap:8px; }
@@ -281,7 +277,7 @@ section {
 .project-tags { display:flex; flex-wrap:wrap; gap:5px; }
 .project-tags span { font-size:.68rem; padding:2px 9px; border-radius:20px; background:var(--primary-dim); color:var(--primary); border:1px solid rgba(0,238,255,0.13); }
 
-/* ===== CONTACT ===== */
+
 .contact-card { width:92%; max-width:980px; padding:45px; }
 .contact-intro { color:var(--text-muted); font-size:.88rem; margin-bottom:20px; line-height:1.7; }
 .contact-wrapper { display:flex; gap:36px; margin-top:18px; flex-wrap:wrap; }
@@ -308,23 +304,19 @@ form { flex:1.6; min-width:270px; display:flex; flex-direction:column; gap:12px;
 .form-group input:focus, .form-group textarea:focus { border-color:rgba(0,238,255,0.35); box-shadow:0 0 0 3px rgba(0,238,255,0.05); }
 .form-group textarea { resize:vertical; min-height:110px; padding-top:22px; }
 
-/* ===== ANIMATIONS ===== */
+
 @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
 *::-webkit-scrollbar { width:3px; height:3px; }
 *::-webkit-scrollbar-thumb { background:rgba(0,238,255,0.18); border-radius:4px; }
 
-/* ============================================================
-   RESPONSIVE — TABLET & MOBILE
-   On screens <= 900px: switch to normal vertical scroll
-   ============================================================ */
 @media (max-width: 900px) {
 
-    body { overflow: auto; cursor: auto; }          /* normal scroll */
+    body { overflow: auto; cursor: auto; }          
 
-    /* Hide desktop cursor elements */
+   
     .cursor-dot, .cursor-ring, .cursor-glow { display:none !important; }
 
-    /* Hamburger visible, desktop nav hidden */
+   
     .nav-links { display:none; }
     .hamburger {
         display:flex; flex-direction:column; justify-content:center;
@@ -340,9 +332,9 @@ form { flex:1.6; min-width:270px; display:flex; flex-direction:column; gap:12px;
     .hamburger.open span:nth-child(2) { opacity:0; }
     .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
 
-    /* Switch to vertical layout */
+  
     #main-slider {
-        display: block;              /* vertical stacking */
+        display: block;             
         width: 100%;
         height: auto;
         overflow: visible;
@@ -359,7 +351,7 @@ form { flex:1.6; min-width:270px; display:flex; flex-direction:column; gap:12px;
         width:100%; max-width:100%;
     }
 
-    /* Hero */
+
     .hero-wrap {
         flex-direction: column-reverse;
         text-align: center; padding:30px 24px; gap:28px;
@@ -371,29 +363,28 @@ form { flex:1.6; min-width:270px; display:flex; flex-direction:column; gap:12px;
     .profile-area { width:210px; height:210px; margin:0 auto; }
     .float-badge { display:none; }
 
-    /* About */
+
     .content-card { width:96%; padding:28px 22px; }
     .about-stats { gap:16px; }
     .stat span { font-size:1.6rem; }
 
-    /* Services */
+
     .services-grid { grid-template-columns:1fr 1fr; gap:12px; }
 
-    /* Skills */
+ 
     .skills-container { grid-template-columns:1fr; gap:16px; }
 
-    /* Projects */
+
     .project-grid { gap:16px; }
     .project-card { width:100%; max-width:420px; }
     .project-overlay { opacity:1; background:rgba(6,15,26,0.7); }
 
-    /* Contact */
     .contact-card { width:96%; padding:28px 20px; }
     .contact-wrapper { flex-direction:column; gap:22px; }
     .contact-info { min-width:unset; }
     form { min-width:unset; }
 
-    /* Section title sizes */
+
     .section-title { font-size:1.9rem; }
 }
 

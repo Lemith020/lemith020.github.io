@@ -5,17 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const drawer    = document.getElementById('mobileDrawer');
     const overlay   = document.getElementById('drawerOverlay');
 
-    /* ─── helpers ─── */
+
     const isMobile = () => window.innerWidth <= 900;
 
-    /* ─── DESKTOP: horizontal scroll nav ─── */
+
     function scrollToSection(id) {
         const clean  = id.replace('#', '');
         const target = document.getElementById(clean);
         if (!target) return;
 
         if (isMobile()) {
-            // vertical scroll
+    
             const top = target.getBoundingClientRect().top + window.scrollY - 70;
             window.scrollTo({ top, behavior: 'smooth' });
         } else {
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll(`a[href="#${id}"]`).forEach(a => a.classList.add('active'));
     }
 
-    // Attach click to all # links
+ 
     document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', e => {
             const href = link.getAttribute('href');
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Update active on desktop horizontal scroll
+ 
     slider.addEventListener('scroll', () => {
         if (isMobile()) return;
         const pos = slider.scrollLeft;
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const l = sec.offsetLeft;
             if (pos >= l - window.innerWidth * 0.35 && pos < l + window.innerWidth * 0.65) {
                 setActive(sec.id);
-                // trigger skill animation
+
                 if (sec.id === 'skills' && !skillsAnimated) {
                     animateSkills(); animateRadar(); skillsAnimated = true;
                 }
